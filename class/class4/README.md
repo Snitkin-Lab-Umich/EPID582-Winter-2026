@@ -49,7 +49,7 @@ Environment variables are the variables/values that describe the environment in 
 
 - What is my current working directory?, 
 - Where are temporary files stored?, 
-- Where are perl/python libraries?, 
+- Where are c++/python libraries?, 
 - Where are my tools installed? etc. 
 
 In addition to environment variables that are set up by system administators, each user can set their own environment variables to customize their experience. This may sound like something super advanced that isn't relevant to beginners, but that's not true! 
@@ -73,7 +73,7 @@ You will see that PATH contains a colon separated list of paths. So, when you ex
 
 One way to set your environment variables would be to manually set up these variables everytime you log in, but this would be extremely tedious and inefficient. So, Unix has setup a way around this, which is to put your environment variable assignments in special files called .bashrc or .bash_profile. Every user has one or both of these files in their home directory, and what's special about them is that the commands in them are executed every time you login. So, if you simply set your environmental variable assignments in one of these files, your environment will be setup just the way you want it each time you login!
 
-Most of the softwares/tools that we need in this workshop we will install with the conda environment manager (to be discussed in future session). However, a few programs cause issues when installed by conda, so we placed them in the following directory: 
+Most of the software/tools that we need in this workshop we will install using the module command, which load software pre-instealled on Great Lakes. However, a few programs aren't available on Great Lakes, so we placed them in the following directory: 
 
 `/scratch/epid582w26_class_root/epid582w26_class/shared_data/bin` 
 
@@ -85,7 +85,7 @@ For this, We will save the full path to these tools in an our PATH variable.
     
 ```
 
-cp ~/.bashrc ~/bashrc_backup_2024_01_12
+cp ~/.bashrc ~/bashrc_backup_2026_01_14
 
 #Note: "~/" represents your home directory. On great lakes, this means /home/username
 
@@ -121,24 +121,6 @@ fi
 
 # User specific aliases and functions
 
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/sw/pkgs/arc/python3.10-anaconda/2023.03/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/sw/pkgs/arc/python3.10-anaconda/2023.03/etc/profile.d/conda.sh" ]; then
-        . "/sw/pkgs/arc/python3.10-anaconda/2023.03/etc/profile.d/conda.sh"
-    else
-        export PATH="/sw/pkgs/arc/python3.10-anaconda/2023.03/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
-
-# ensure base conda env is turned off to prevent OOD problems
-conda config --set auto_activate_base false
-
 ##epid582 ENV
 
 #Aliases
@@ -150,8 +132,6 @@ export PATH=$PATH:/scratch/epid582w26_class_root/epid582w26_class/shared_data/bi
 export PATH=$PATH:/scratch/epid582w26_class_root/epid582w26_class/shared_data/bin/multiqc/bin
 
 ```
-
-
 
 Note: Replace the word "username" under alias shortcuts with your own umich "uniqname". 
  
