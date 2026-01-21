@@ -275,7 +275,7 @@ mv fasta_counter_2.sbat fasta_counter_MN_CRE_fasta.sbat
 
 Now if you type ls, you'll notice that 'fasta_counter_2.sbat' is no longer there! Note that the 'mv' command can be used to rename, but also move files to different directories.
 
-Lastly, edit fasta_counter_assembly_2.sbat to work on the MN_CRE_fasta directory, and submit it to the cluster!
+Lastly, edit fasta_counter_MN_CRE_fasta.sba to work on the MN_CRE_fasta directory, and submit it to the cluster!
 
 
 Practice with for loops, shell scripts and SLURM
@@ -305,35 +305,3 @@ module av
 
 Use the space key to explore the entire suite of tools that are available from Great Lakes. Users can load any of these tools using `module load toolname` command and will be ready for use without the need to install them.
 
-Set up a conda environment using a YML file 
--------------------------------------------
-
-***You will do this on your own for HW, as it takes a few minutes***
-
-The YML file - `MICRO582_class5_QC.yml` required for generating a conda environment for our next class is located here:
-
-```
-/scratch/epid582w26_class_root/epid582w26_class/shared_data/conda_envs
-```
-
-Load great lakes anaconda package and set up a conda environment in the following way - 
-
-```
-# Load anaconda package from great lakes
-
-module load python3.10-anaconda/2023.03
-
-# Set channel_priority to false so that it can install packages as per the YML file and not from loaded channels.
-
-conda config --set channel_priority false
-
-# Create a new conda environment - micro612 from a YML file
-
-conda env create -f /scratch/epid582w26_class_root/epid582w26_class/shared_data/conda_envs/MICRO582_class5_QC.yml -n MICRO582_class5_QC
-
-# Lets check the list of conda environments. 
-# You should see the conda environment name on left 
-# and the path to the directories where conda installed all the tools that were described in MICRO582_class5_QC.yml file.
-
-conda env list
-```
