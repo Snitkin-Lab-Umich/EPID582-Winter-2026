@@ -23,20 +23,8 @@ When we get raw sequencing data back it comes in fastq format. A few important n
 
 1. With Illumina data we typically generate paired end data, meaning we sequence each fragment from both ends. This is done because the positional information provided by knowing two sequences are separated by some known insert length can be useful in genome assembly and for increasing confidence when aligning reads to reference genome assemblies.
 2. Since we are generating paired end data, we will get two fastq files, one for the forward reads and one for the reverse reads. Importantly, these files will contain the exact same number of sequences, and the order of sequences in the files are such that sequence N in the forward file matches sequence N in the reverse file (i.e. they are the forward and reverse sequence of original sequenced fragment N)
-3. For the fastq format, each sequence is captured in four lines:(i) sequence header, (ii) base sequence, (iii) quality header and (iv) base quality scores corresponding to each sequenced base. The base quality scores will look incomprehensible, but they are ASCII (i.e. single character) representation of PHRED scores. PHRED scores are numeric confidence in a given sequence base (-log10(probability of base)), and used as a proxy for base quality.
+3. For the fastq format, each sequence is captured in four lines:(i) sequence header, (ii) base sequence, (iii) quality header and (iv) base quality scores corresponding to each sequenced base. The sequence header contains information about the sequencing machine used to generate the data and positional information on the machine. The base quality scores will look incomprehensible, but they are ASCII (i.e. single character) representation of PHRED scores. PHRED scores are numeric confidence in a given sequence base (-log10(probability of base)), and used as a proxy for base quality.
 
-In case your wondering how to read the sequence quality header, atypical Illumina header looks like this:
-@<Instrument>:<RunID>:<FlowCellID>:<Lane>:<Tile>:<X_pos>:<Y_pos> <ReadNum>:<Filter>:<Control>:<IndexSequence> 
-
-- @: Denotes the start of a new record.
-- Instrument: Unique ID of the sequencer.
-- Run ID: Specific identifier for the sequencing run.
-- FlowCell ID: Unique identifier for the flowcell used.
-- Lane/Tile: Physical location of the cluster on the flowcell.
-- X/Y_pos: Precise coordinates of the cluster.
-- ReadNum: 1 for forward, 2 for reverse.
-- Filter: Y if the read passes filter, N otherwise.
-- IndexSequence: The barcode sequence used for sample identification.
 
 Contamination Screening using [Kraken](https://ccb.jhu.edu/software/kraken/)
 --------------------------------------------
