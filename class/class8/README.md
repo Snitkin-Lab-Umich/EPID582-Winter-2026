@@ -8,30 +8,25 @@ Goal
 - We will then do a quick genomic comparison of the downloaded dataset using Mashtree. 
 - Finally, we will visualize our rough phylogeny and associated meta-data in iTOL
 
-#### Set up conda environment
+#### Set up  environment
 
-We will be setting up two environments for the class today. class8_sratools will install SRA toolkit that we will use to extract metadata information from NCBI database and download the samples.  We will then perform a quick genome comparison with Mashtree using class8_mashtree environment.
-
-Lets create two seperate environments class8_sratools and class8_mashtree
+We will be loading some modules to allow us access to several tools today.
 
 ```
-# class8_sratools environment
-conda create -n class8_sratools -c bioconda sra-tools=2.10.0 entrez-direct
+# Load the Bioinformatics module, which gives us access to others:
+module load Bioinformatics
 
-# class8_mashtree environment. 
-conda create -n class8_mashtree -c bioconda mashtree
-
-# FYI, GL also has mashtree installed as a module that you can load with:
-module load Bioinformatics mashtree
-
+#Load mashtree and test
+module load mashtree
 mashtree -h
 
-conda activate class8_sratools
-
+#Load EDirect and test
+module load EDirect
 esearch -h
 
+#Load sra-tools and test
+module load sratoolkit
 fasterq-dump -h
-
 
 ```
 If you can see the help menu for each of these tools then you are all set for today's analysis.
@@ -239,4 +234,5 @@ A couple of things we notice by viewing our data this way:
 2. Human infections form different clusters on the tree, indicating multiple lineages of Klebsiella capable of causing human infections
 3. Human carrier and infection isolates can be seen clustered together, suggesting that a given strain can either colonize or cause infection
 4. The number of antibiotic resistance genes appears on average larger in human associated isolates, which is consistent with the results in the manuscript.
+
 
