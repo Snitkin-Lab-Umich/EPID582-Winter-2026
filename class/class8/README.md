@@ -76,9 +76,6 @@ cp -r ../shared_data/class8/ .
 #Enter class 8 directory
 cd class8
 
-#Activate conda environment
-conda activate class8_sratools
-
 #Run esearch command to pull sample meta-data for bioproject
 esearch -h
 
@@ -153,10 +150,6 @@ The kmer distances that are being computed are called Mash distances. Mash stand
 *We have already run mashtree for you, but here is how we did it
 
 ```
-#Activate the environment so we can run mashtree and also load mash from the Bioinformatics module.
-conda activate class8_mashtree
-module load Bioinformatics mash
-
 #Edit the .sbat file to put in your email address
 nano mashtree.sbat
 
@@ -234,5 +227,6 @@ A couple of things we notice by viewing our data this way:
 2. Human infections form different clusters on the tree, indicating multiple lineages of Klebsiella capable of causing human infections
 3. Human carrier and infection isolates can be seen clustered together, suggesting that a given strain can either colonize or cause infection
 4. The number of antibiotic resistance genes appears on average larger in human associated isolates, which is consistent with the results in the manuscript.
+
 
 
