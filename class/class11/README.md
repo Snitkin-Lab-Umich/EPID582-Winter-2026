@@ -49,6 +49,7 @@ install.packages("tidyverse")
 install.packages("RColorBrewer")
 install.packages("BiocManager")
 install.packages('pheatmap')
+#If you get an error that 'remotes' isn't installed, then first install (BiocManager::install("remotes")) and load (library(remotes))
 BiocManager::install("YuLab-SMU/treedataverse")
 
 #Load R libraries
@@ -213,3 +214,4 @@ Placing our outbreak genomes in the context of public genomes revealed several i
 For more details on the analysis check out [our manuscript](https://academic.oup.com/cid/article/73/8/1431/6277037?login=true).
   
 </details>
+
