@@ -88,7 +88,7 @@ harvesttools -i parsnp.ggr -M parsnpLCB.aln
 
 > ***iii. View multiple genome alignment in [gingr](https://harvest.readthedocs.io/en/latest/content/gingr.html)***
 
-Gingr is a visualization tool that accompanies parsnp. So, let's load the files from our class 12 directory into gingr by using File->open tab to read in parsnp.gg
+Gingr is a visualization tool that accompanies parsnp. So, let's load the files from our class 12 directory into gingr by using File->open tab to read in parsnp.ggr
 
 Notice the structure of the tree (i.e. which genomes are closely related to one another) and whether variants are or aren't evenly spaced across the genome.
 
@@ -108,9 +108,6 @@ Use the read.dna function in ape to read in you multiple alignments.
 Print out the variable to get a summary.
 
 ```
-#SET YOUR DIRECTORY
-setwd("~/Desktop/Abau_parsnp/")
-
 library(ape)
 
 #READ IN THE MULTIPLE GENOME ALIGNMENT AND CHANGE THE NAMES TO REMOVE FILE EXTENSIONS
@@ -254,5 +251,6 @@ plot(gubbins_tree_noOG, cex = 0.5)
 How does the structure look different than the unfiltered tree?
 
 - Note that turning back to the backstory of these isolates, Abau_B and Abau_C were both isolated first from the same patient. So this analysis supports that patient having imported both strains, which likely diverged at a prior hospital at which they resided.
+
 
 
