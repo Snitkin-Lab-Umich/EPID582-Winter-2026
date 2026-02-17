@@ -110,9 +110,10 @@ Print out the variable to get a summary.
 ```
 library(ape)
 
-#READ IN THE MULTIPLE GENOME ALIGNMENT AND CHANGE THE NAMES TO REMOVE FILE EXTENSIONS
-abau_msa = read.dna('class12/parsnp_results/parsnpLCB.aln', format = "fasta") 
-row.names(abau_msa) = gsub(".fa|.fasta", "", row.names(abau_msa))
+#READ IN THE MULTIPLE GENOME ALIGNMENT AND SHORTEN THE NAMES
+abau_msa = read.dna('class12/parsnp_results/parsnpLCB.aln', format = "fasta")
+
+row.names(abau_msa) = gsub("_genome.*", "", row.names(abau_msa))
 ```
 
 > ***ii. Count number of variants between sequences***
@@ -139,15 +140,17 @@ plot(parsnp_tree)
 Next, let's root our tree by the outgroup so that the structure is correct.
 
 ```
-parsnp_tree$tip.label<-gsub("\'|.fasta|.fa","",parsnp_tree$tip.label)
-parsnp_tree_rooted = root(parsnp_tree, "Abau_AB0057_genome")
+parsnp_tree$tip.label <- gsub("'","",parsnp_tree$tip.label)
+parsnp_tree$tip.label <- gsub("_genome.*","",parsnp_tree$tip.label)
+
+parsnp_tree_rooted = root(parsnp_tree, "Abau_AB0057")
 plot(parsnp_tree_rooted, cex = 0.5)
 ```
 
 Now that the tree is rooted, let's drop the outgroup so we can more clearly see the tree structure for our isolates of interest.
 
 ```
-parsnp_tree_rooted_drop = drop.tip(parsnp_tree_rooted, c('Abau_AB0057_genome'))
+parsnp_tree_rooted_drop = drop.tip(parsnp_tree_rooted, c('Abau_AB0057'))
 plot(parsnp_tree_rooted_drop, cex = 0.5)
 ```
 
@@ -251,6 +254,7 @@ plot(gubbins_tree_noOG, cex = 0.5)
 How does the structure look different than the unfiltered tree?
 
 - Note that turning back to the backstory of these isolates, Abau_B and Abau_C were both isolated first from the same patient. So this analysis supports that patient having imported both strains, which likely diverged at a prior hospital at which they resided.
+
 
 
 
